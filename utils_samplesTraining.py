@@ -266,7 +266,7 @@ def readAssociatedFile_fromAIRAC_givenDate(day):
 
     Input:
         * day[str-DD/MM/YYYY]
-    
+
     Output:
         * normal_capacity[dataFrame] -> Exported file from the AIRAC as a dataFrame
         * regulations[dataFrame] -> Exported file from the AIRAC as a dataFrame
@@ -276,70 +276,103 @@ def readAssociatedFile_fromAIRAC_givenDate(day):
 
     split_day = day.split('/')
 
-    if((date(int(split_day[2]), int(split_day[1]), int(split_day[0])) >= date(2019, 5, 23)) and
-       (date(int(split_day[2]), int(split_day[1]), int(split_day[0])) <= date(2019, 6, 19))):
+    if ((date(int(split_day[2]), int(split_day[1]), int(split_day[0])) >= date(2019, 5, 23)) and
+            (date(int(split_day[2]), int(split_day[1]), int(split_day[0])) <= date(2019, 6, 19))):
         normal_capacity = pd.read_csv('./Exports_RNEST/Capacity_1906.ncap', sep=";", header=None)
         regulations = pd.read_csv('./Exports_RNEST/RegPlan_1906.nreg', sep=" ", header=None)
-        oc = pd.read_csv('./Exports_RNEST/oc_1906.csv', sep=";", header=None, engine='c', low_memory=False, skiprows=[0, 1])
-        ec_20_20 = pd.read_csv('./Exports_RNEST/ec_1906_20_20.csv', sep=";", header=None, engine='c', low_memory=False, skiprows=[0, 1])
-        ec_60_20 = pd.read_csv('./Exports_RNEST/ec_1906_60_20.csv', sep=";", header=None, engine='c', low_memory=False, skiprows=[0, 1])
-        workload_1_1 = pd.read_csv('./Exports_RNEST/complexity_workload_1906_1_1.csv', sep=";", header=None, engine='c', low_memory=False, skiprows=[0, 1])
-        workload_20_20 = pd.read_csv('./Exports_RNEST/complexity_workload_1906_20_20.csv', sep=";", header=None, engine='c', low_memory=False, skiprows=[0, 1])
-        num_conflicts_1_1 = pd.read_csv('./Exports_RNEST/complexity_numConflicts_1906_1_1.csv', sep=";", header=None, engine='c', low_memory=False, skiprows=[0, 1])
-        climbing_1_1 = pd.read_csv('./Exports_RNEST/complexity_climbing_1906_1_1.csv', sep=";", header=None, engine='c', low_memory=False, skiprows=[0, 1])
-        cruising_1_1 = pd.read_csv('./Exports_RNEST/complexity_cruising_1906_1_1.csv', sep=";", header=None, engine='c', low_memory=False, skiprows=[0, 1])
-        descending_1_1 = pd.read_csv('./Exports_RNEST/complexity_descending_1906_1_1.csv', sep=";", header=None, engine='c', low_memory=False, skiprows=[0, 1])
+        oc = pd.read_csv('./Exports_RNEST/oc_1906.csv', sep=";", header=None, engine='c', low_memory=False,
+                         skiprows=[0, 1])
+        ec_20_20 = pd.read_csv('./Exports_RNEST/ec_1906_20_20.csv', sep=";", header=None, engine='c', low_memory=False,
+                               skiprows=[0, 1])
+        ec_60_20 = pd.read_csv('./Exports_RNEST/ec_1906_60_20.csv', sep=";", header=None, engine='c', low_memory=False,
+                               skiprows=[0, 1])
+        workload_1_1 = pd.read_csv('./Exports_RNEST/complexity_workload_1906_1_1.csv', sep=";", header=None, engine='c',
+                                   low_memory=False, skiprows=[0, 1])
+        workload_20_20 = pd.read_csv('./Exports_RNEST/complexity_workload_1906_20_20.csv', sep=";", header=None,
+                                     engine='c', low_memory=False, skiprows=[0, 1])
+        num_conflicts_1_1 = pd.read_csv('./Exports_RNEST/complexity_numConflicts_1906_1_1.csv', sep=";", header=None,
+                                        engine='c', low_memory=False, skiprows=[0, 1])
+        climbing_1_1 = pd.read_csv('./Exports_RNEST/complexity_climbing_1906_1_1.csv', sep=";", header=None, engine='c',
+                                   low_memory=False, skiprows=[0, 1])
+        cruising_1_1 = pd.read_csv('./Exports_RNEST/complexity_cruising_1906_1_1.csv', sep=";", header=None, engine='c',
+                                   low_memory=False, skiprows=[0, 1])
+        descending_1_1 = pd.read_csv('./Exports_RNEST/complexity_descending_1906_1_1.csv', sep=";", header=None,
+                                     engine='c', low_memory=False, skiprows=[0, 1])
 
-    elif((date(int(split_day[2]), int(split_day[1]), int(split_day[0])) >= date(2019, 6, 20)) and
-         (date(int(split_day[2]), int(split_day[1]), int(split_day[0])) <= date(2019, 7, 17))):
+    elif ((date(int(split_day[2]), int(split_day[1]), int(split_day[0])) >= date(2019, 6, 20)) and
+          (date(int(split_day[2]), int(split_day[1]), int(split_day[0])) <= date(2019, 7, 17))):
         normal_capacity = pd.read_csv('./Exports_RNEST/Capacity_1907.ncap', sep=";", header=None)
         regulations = pd.read_csv('./Exports_RNEST/RegPlan_1907.nreg', sep=" ", header=None)
-        oc = pd.read_csv('./Exports_RNEST/oc_1907.csv', sep=";", header=None, engine='c', low_memory=False, skiprows=[0,1])
-        ec_20_20 = pd.read_csv('./Exports_RNEST/ec_1907_20_20.csv', sep=";", header=None, engine='c', low_memory=False, skiprows=[0, 1])
-        ec_60_20 = pd.read_csv('./Exports_RNEST/ec_1907_60_20.csv', sep=";", header=None, engine='c', low_memory=False, skiprows=[0,1])
-        workload_1_1 = pd.read_csv('./Exports_RNEST/complexity_workload_1907_1_1.csv', sep=";", header=None, engine='c', low_memory=False, skiprows=[0, 1])
-        workload_20_20 = pd.read_csv('./Exports_RNEST/complexity_workload_1907_20_20.csv', sep=";", header=None, engine='c', low_memory=False, skiprows=[0, 1])
-        num_conflicts_1_1 = pd.read_csv('./Exports_RNEST/complexity_numConflicts_1907_1_1.csv', sep=";", header=None, engine='c', low_memory=False, skiprows=[0, 1])
-        climbing_1_1 = pd.read_csv('./Exports_RNEST/complexity_climbing_1907_1_1.csv', sep=";", header=None, engine='c', low_memory=False, skiprows=[0, 1])
-        cruising_1_1 = pd.read_csv('./Exports_RNEST/complexity_cruising_1907_1_1.csv', sep=";", header=None, engine='c', low_memory=False, skiprows=[0, 1])
-        descending_1_1 = pd.read_csv('./Exports_RNEST/complexity_descending_1907_1_1.csv', sep=";", header=None, engine='c', low_memory=False, skiprows=[0, 1])
+        oc = pd.read_csv('./Exports_RNEST/oc_1907.csv', sep=";", header=None, engine='c', low_memory=False,
+                         skiprows=[0, 1])
+        ec_20_20 = pd.read_csv('./Exports_RNEST/ec_1907_20_20.csv', sep=";", header=None, engine='c', low_memory=False,
+                               skiprows=[0, 1])
+        ec_60_20 = pd.read_csv('./Exports_RNEST/ec_1907_60_20.csv', sep=";", header=None, engine='c', low_memory=False,
+                               skiprows=[0, 1])
+        workload_1_1 = pd.read_csv('./Exports_RNEST/complexity_workload_1907_1_1.csv', sep=";", header=None, engine='c',
+                                   low_memory=False, skiprows=[0, 1])
+        workload_20_20 = pd.read_csv('./Exports_RNEST/complexity_workload_1907_20_20.csv', sep=";", header=None,
+                                     engine='c', low_memory=False, skiprows=[0, 1])
+        num_conflicts_1_1 = pd.read_csv('./Exports_RNEST/complexity_numConflicts_1907_1_1.csv', sep=";", header=None,
+                                        engine='c', low_memory=False, skiprows=[0, 1])
+        climbing_1_1 = pd.read_csv('./Exports_RNEST/complexity_climbing_1907_1_1.csv', sep=";", header=None, engine='c',
+                                   low_memory=False, skiprows=[0, 1])
+        cruising_1_1 = pd.read_csv('./Exports_RNEST/complexity_cruising_1907_1_1.csv', sep=";", header=None, engine='c',
+                                   low_memory=False, skiprows=[0, 1])
+        descending_1_1 = pd.read_csv('./Exports_RNEST/complexity_descending_1907_1_1.csv', sep=";", header=None,
+                                     engine='c', low_memory=False, skiprows=[0, 1])
 
-    elif((date(int(split_day[2]), int(split_day[1]), int(split_day[0])) >= date(2019, 7, 18))
-         and (date(int(split_day[2]), int(split_day[1]), int(split_day[0])) <= date(2019, 8, 14))):
+    elif ((date(int(split_day[2]), int(split_day[1]), int(split_day[0])) >= date(2019, 7, 18))
+          and (date(int(split_day[2]), int(split_day[1]), int(split_day[0])) <= date(2019, 8, 14))):
         normal_capacity = pd.read_csv('./Exports_RNEST/Capacity_1908.ncap', sep=";", header=None)
         regulations = pd.read_csv('./Exports_RNEST/RegPlan_1908.nreg', sep=" ", header=None)
-        oc = pd.read_csv('./Exports_RNEST/oc_1908.csv', sep=";", header=None, engine='c', low_memory=False, skiprows=[0,1])
-        ec_20_20 = pd.read_csv('./Exports_RNEST/ec_1908_20_20.csv', sep=";", header=None, engine='c', low_memory=False, skiprows=[0, 1])
-        ec_60_20 = pd.read_csv('./Exports_RNEST/ec_1908_60_20.csv', sep=";", header=None, engine='c', low_memory=False, skiprows=[0,1])
-        workload_1_1 = pd.read_csv('./Exports_RNEST/complexity_workload_1908_1_1.csv', sep=";", header=None, engine='c', low_memory=False, skiprows=[0, 1])
-        workload_20_20 = pd.read_csv('./Exports_RNEST/complexity_workload_1908_20_20.csv', sep=";", header=None, engine='c', low_memory=False, skiprows=[0, 1])
-        num_conflicts_1_1 = pd.read_csv('./Exports_RNEST/complexity_numConflicts_1908_1_1.csv', sep=";", header=None, engine='c', low_memory=False, skiprows=[0, 1])
-        climbing_1_1 = pd.read_csv('./Exports_RNEST/complexity_climbing_1908_1_1.csv', sep=";", header=None, engine='c', low_memory=False, skiprows=[0, 1])
-        cruising_1_1 = pd.read_csv('./Exports_RNEST/complexity_cruising_1908_1_1.csv', sep=";", header=None, engine='c', low_memory=False, skiprows=[0, 1])
-        descending_1_1 = pd.read_csv('./Exports_RNEST/complexity_descending_1908_1_1.csv', sep=";", header=None, engine='c', low_memory=False, skiprows=[0, 1])
+        oc = pd.read_csv('./Exports_RNEST/oc_1908.csv', sep=";", header=None, engine='c', low_memory=False,
+                         skiprows=[0, 1])
+        ec_20_20 = pd.read_csv('./Exports_RNEST/ec_1908_20_20.csv', sep=";", header=None, engine='c', low_memory=False,
+                               skiprows=[0, 1])
+        ec_60_20 = pd.read_csv('./Exports_RNEST/ec_1908_60_20.csv', sep=";", header=None, engine='c', low_memory=False,
+                               skiprows=[0, 1])
+        workload_1_1 = pd.read_csv('./Exports_RNEST/complexity_workload_1908_1_1.csv', sep=";", header=None, engine='c',
+                                   low_memory=False, skiprows=[0, 1])
+        workload_20_20 = pd.read_csv('./Exports_RNEST/complexity_workload_1908_20_20.csv', sep=";", header=None,
+                                     engine='c', low_memory=False, skiprows=[0, 1])
+        num_conflicts_1_1 = pd.read_csv('./Exports_RNEST/complexity_numConflicts_1908_1_1.csv', sep=";", header=None,
+                                        engine='c', low_memory=False, skiprows=[0, 1])
+        climbing_1_1 = pd.read_csv('./Exports_RNEST/complexity_climbing_1908_1_1.csv', sep=";", header=None, engine='c',
+                                   low_memory=False, skiprows=[0, 1])
+        cruising_1_1 = pd.read_csv('./Exports_RNEST/complexity_cruising_1908_1_1.csv', sep=";", header=None, engine='c',
+                                   low_memory=False, skiprows=[0, 1])
+        descending_1_1 = pd.read_csv('./Exports_RNEST/complexity_descending_1908_1_1.csv', sep=";", header=None,
+                                     engine='c', low_memory=False, skiprows=[0, 1])
 
-    elif((date(int(split_day[2]), int(split_day[1]), int(split_day[0])) >= date(2019, 8, 15))
-         and (date(int(split_day[2]), int(split_day[1]), int(split_day[0])) <= date(2019, 9, 11))):
+    elif ((date(int(split_day[2]), int(split_day[1]), int(split_day[0])) >= date(2019, 8, 15))
+          and (date(int(split_day[2]), int(split_day[1]), int(split_day[0])) <= date(2019, 9, 11))):
         normal_capacity = pd.read_csv('./Exports_RNEST/Capacity_1909.ncap', sep=";", header=None)
         regulations = pd.read_csv('./Exports_RNEST/RegPlan_1909.nreg', sep=" ", header=None)
-        oc = pd.read_csv('./Exports_RNEST/oc_1909.csv', sep=";", header=None, engine='c', low_memory=False, skiprows=[0,1])
-        ec_20_20 = pd.read_csv('./Exports_RNEST/ec_1909_20_20.csv', sep=";", header=None, engine='c', low_memory=False, skiprows=[0, 1])
-        ec_60_20 = pd.read_csv('./Exports_RNEST/ec_1909_60_20.csv', sep=";", header=None, engine='c', low_memory=False, skiprows=[0,1])
-        workload_1_1 = pd.read_csv('./Exports_RNEST/complexity_workload_1909_1_1.csv', sep=";", header=None, engine='c', low_memory=False, skiprows=[0, 1])
-        workload_20_20 = pd.read_csv('./Exports_RNEST/complexity_workload_1909_20_20.csv', sep=";", header=None, engine='c', low_memory=False, skiprows=[0, 1])
-        # num_conflicts_1_1 = pd.read_csv('./Exports_RNEST/complexity_numConflicts_1909_1_1.csv', sep=";", header=None, engine='c', low_memory=False, skiprows=[0, 1])
-        climbing_1_1 = pd.read_csv('./Exports_RNEST/complexity_climbing_1909_1_1.csv', sep=";", header=None, engine='c', low_memory=False, skiprows=[0, 1])
-        cruising_1_1 = pd.read_csv('./Exports_RNEST/complexity_cruising_1909_1_1.csv', sep=";", header=None, engine='c', low_memory=False, skiprows=[0, 1])
-        descending_1_1 = pd.read_csv('./Exports_RNEST/complexity_descending_1909_1_1.csv', sep=";", header=None, engine='c', low_memory=False, skiprows=[0, 1])
+        oc = pd.read_csv('./Exports_RNEST/oc_1909.csv', sep=";", header=None, engine='c', low_memory=False,
+                         skiprows=[0, 1])
+        ec_20_20 = pd.read_csv('./Exports_RNEST/ec_1909_20_20.csv', sep=";", header=None, engine='c', low_memory=False,
+                               skiprows=[0, 1])
+        ec_60_20 = pd.read_csv('./Exports_RNEST/ec_1909_60_20.csv', sep=";", header=None, engine='c', low_memory=False,
+                               skiprows=[0, 1])
+        workload_1_1 = pd.read_csv('./Exports_RNEST/complexity_workload_1909_1_1.csv', sep=";", header=None, engine='c',
+                                   low_memory=False, skiprows=[0, 1])
+        workload_20_20 = pd.read_csv('./Exports_RNEST/complexity_workload_1909_20_20.csv', sep=";", header=None,
+                                     engine='c', low_memory=False, skiprows=[0, 1])
+        num_conflicts_1_1 = pd.read_csv('./Exports_RNEST/complexity_numConflicts_1909_1_1.csv', sep=";", header=None,
+                                        engine='c', low_memory=False, skiprows=[0, 1])
+        climbing_1_1 = pd.read_csv('./Exports_RNEST/complexity_climbing_1909_1_1.csv', sep=";", header=None, engine='c',
+                                   low_memory=False, skiprows=[0, 1])
+        cruising_1_1 = pd.read_csv('./Exports_RNEST/complexity_cruising_1909_1_1.csv', sep=";", header=None, engine='c',
+                                   low_memory=False, skiprows=[0, 1])
+        descending_1_1 = pd.read_csv('./Exports_RNEST/complexity_descending_1909_1_1.csv', sep=";", header=None,
+                                     engine='c', low_memory=False, skiprows=[0, 1])
 
     else:
         sys.exit("The requested files do not exist for the given day: " + str(day))
 
-    # return normal_capacity, regulations, oc, ec_20_20, ec_60_20, \
-    #         workload_1_1, workload_20_20, num_conflicts_1_1, climbing_1_1, cruising_1_1, descending_1_1
-
     return normal_capacity, regulations, oc, ec_20_20, ec_60_20, \
-                workload_1_1, workload_20_20, climbing_1_1, cruising_1_1, descending_1_1
+           workload_1_1, workload_20_20, num_conflicts_1_1, climbing_1_1, cruising_1_1, descending_1_1
 
 
 def extract_counts_excelFromExportRNEST(counts_fromExport, delta_timesteps):
