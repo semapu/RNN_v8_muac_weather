@@ -1,6 +1,6 @@
 """
-Author: Sergi Mas Pujol
-Last update: 10/11/2020
+Author: Sergi Mas-Pujol
+Last update: 13/06/2021
 
 Python version: 3.6
 """
@@ -16,6 +16,7 @@ def extract_weather_information_from_list_days_and_timestamps(list_days,
                                                               num_metric_per_weather_feature: int,
                                                               X):
     """
+    Function to extract the weather information you need per input sample (interval)
 
     Args:
         list_days: [List] List of days from which extract the features in format DD/MM/YYYY
@@ -39,7 +40,6 @@ def extract_weather_information_from_list_days_and_timestamps(list_days,
     current_sector_name = traffic_volume[0]
     current_month = list_days[0].split('/')[1]
     grib = pygrib.open('./Export_weather_information/' + current_sector_name + '_' + current_month + '_250.grib')
-    # grib = pygrib.open('./Export_weather_information_all_features/' + current_sector_name + '_' + current_month + '_250.grib')
 
     counter_day = 0
     for day, start, end, sector_name in zip(list_days, start_time_samples, end_time_samples, traffic_volume):
@@ -54,7 +54,6 @@ def extract_weather_information_from_list_days_and_timestamps(list_days,
 
             # Load and open the grib file
             grib = pygrib.open('./Export_weather_information/' + current_sector_name + '_' + current_month + '_250.grib')
-            # grib = pygrib.open('./Export_weather_information_all_features/' + current_sector_name + '_' + current_month + '_250.grib')
 
         # Extract the required features
         day_int_format = int(day.split('/')[0])
@@ -64,11 +63,6 @@ def extract_weather_information_from_list_days_and_timestamps(list_days,
                             num_weather_features * 24 * (day_int_format - 1) + num_weather_features * timestamp + num_weather_features]
 
         for i in range(num_weather_features):
-            # print('month: ', grb[i]['month'])
-            # print('day:', grb[i]['day'])
-            # print('hour:', grb[i]['hour'])
-            # print('parameterName: ', grb[i]['parameterName'])
-
             # Sanity check to ensure the correct features are being extracted
             if int(grb[i]['month']) == int(current_month) and int(grb[i]['day']) == day_int_format and int(grb[i]['hour']) == timestamp:
                 X[counter_day, 0:30, num_metric_per_weather_feature * i + 0] = grb[i]['minimum']
